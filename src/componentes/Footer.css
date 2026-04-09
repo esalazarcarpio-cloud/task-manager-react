@@ -1,0 +1,12 @@
+/* Footer.css */
+.footer {
+  background: rgba(0, 0, 0, 0.7);  /* negro semi-transparente */
+  backdrop-filter: blur(10px);      /* efecto glass */
+  padding: 8px 15px;                /* menos alto que antes */
+  text-align: center;
+  font-size: 12px;                  /* texto más pequeño */
+  font-weight: bold;
+  color: white;                     /* texto visible */
+  border-top: 1px solid rgba(255, 255, 255, 0.3); /* separación sutil */
+  border-radius: 0 0 10px 10px;     /* bordes redondeados abajo */
+}

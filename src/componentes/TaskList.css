@@ -1,0 +1,21 @@
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0; /* gris claro de fondo */
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #3498db; /* azul sólido */
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  line-height: 20px; /* para centrar el texto verticalmente */
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+}

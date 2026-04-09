@@ -1,0 +1,11 @@
+/* Header.css */
+.header {
+  background: rgba(255, 255, 255, 0.9); /* fondo semi-transparente */
+  backdrop-filter: blur(10px);          /* efecto glass */
+  padding: 15px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;                          /* color del texto */
+  border-bottom: 2px solid #ccc;
+}

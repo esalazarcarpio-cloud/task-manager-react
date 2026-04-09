@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+
+  /* Degradado verde turquesa */
+  background: linear-gradient(to right, #40e0d0, #2ecc71);
+
+  /* Fuente */
+  font-family: "Times New Roman", Times, serif;
+  
+}
+.app-container {
+  max-width: 600px;               /* ancho máximo */
+  margin: 50px auto;               /* centrado horizontal + margen superior */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* fondo tipo tarjeta */
+  border-radius: 15px;             /* bordes redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* sombra */
+  backdrop-filter: blur(5px);      /* efecto glass */
+}
