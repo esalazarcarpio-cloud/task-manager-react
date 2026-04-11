@@ -1,58 +1,24 @@
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.4); /* fondo semitransparente */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+import React from "react";
+import "./ConfirmModal.css";
+
+type Props = {
+  message: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+};
+
+function ConfirmModal({ message, onConfirm, onCancel }: Props) {
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <p>{message}</p>
+        <div className="modal-buttons">
+          <button className="confirm-btn" onClick={onConfirm}>Sí</button>
+          <button className="cancel-btn" onClick={onCancel}>Cancelar</button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-.modal-content {
-  background-color: white;
-  padding: 20px 30px;
-  border-radius: 8px;
-  text-align: center;
-  max-width: 350px;
-  width: 90%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  font-family: "Times New Roman", Times, serif;
-}
-
-.modal-buttons {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.confirm-btn {
-  background-color: #3498db; /* azul en lugar de rojo */
-  color: white;
-  border: none;
-  padding: 6px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.2s;
-}
-
-.confirm-btn:hover {
-  background-color: #2980b9; /* azul más oscuro al pasar el mouse */
-}
-
-.cancel-btn {
-  background-color: #ccc;
-  color: #333;
-  border: none;
-  padding: 6px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.cancel-btn:hover {
-  background-color: #999;
-}
+export default ConfirmModal;

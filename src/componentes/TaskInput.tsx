@@ -32,6 +32,7 @@ function TaskInput({ onAddTask }: Props) {
 
   return (
     <div className="task-input-container">
+      
       <label className="task-input-label">
         Tareas para hoy ({formattedDate})
       </label>
