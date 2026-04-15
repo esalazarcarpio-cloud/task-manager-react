@@ -3,15 +3,13 @@ import "./TaskCard.css";
 
 type Props = {
   text: string;
+  completed:boolean,
   onToggle: (completed: boolean) => void;
   onDelete: () => void;
 };
 
-function TaskCard({ text, onToggle, onDelete }: Props) {
-  const [completed, setCompleted] = useState(false);
-
-  const toggleCompleted = () => {
-    setCompleted(!completed);
+function TaskCard({ text, completed, onToggle, onDelete }: Props) {
+  const toggleCompleted = () => {    
     onToggle(!completed);
   };
 

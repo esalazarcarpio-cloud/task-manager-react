@@ -6,9 +6,7 @@ import "./TaskList.css";
 
 function TaskList() {
   const [tasks, setTasks] = useState([
-    { text: "Hacer yoga", completed: false },
-    { text: "Hacer pilates", completed: false },
-    { text: "Leer libro", completed: false },
+    
   ]);
   useEffect(
     ()=>{
@@ -27,7 +25,7 @@ function TaskList() {
 
   // Agregar nueva tarea
   const addTask = (text: string) => {
-    let task={id:tasks.length+1,text:text, completed:false}
+    let task={text:text, completed:false}
     fetch("http://localhost:3000/tasks",{
       method:'POST',
       headers:{
@@ -37,7 +35,7 @@ function TaskList() {
     }).then(response => response.json())
     .then(datax=>{
       console.log("tarea creada en backend", datax);
-      setTasks([...tasks, { text, completed: false }]);
+      setTasks([...tasks, datax]);
     }).catch(
       error=>{
         console.error("Error al guardar tarea", error);
@@ -49,9 +47,26 @@ function TaskList() {
 
   // Toggle de completado
   const toggleTask = (index: number, completed: boolean) => {
-    const newTasks = [...tasks];
-    newTasks[index].completed = completed;
-    setTasks(newTasks);
+    const task = tasks[index]!;
+    task.completed = completed;
+
+    fetch("http://localhost:3000/tasks/" + task.id,{
+      method:'PUT',
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(task)
+    }).then(response => response.json())
+    .then(datax=>{
+      console.log("tarea actualizada en backend", datax);
+      const newTasks = [...tasks];
+      newTasks[index] = task;
+      setTasks(newTasks);
+    }).catch(
+      error=>{
+        console.error("Error al guardar tarea", error);
+      }
+    );
   };
 
   // Mostrar modal de confirmación
@@ -62,8 +77,20 @@ function TaskList() {
   // Confirmar eliminación
   const handleConfirmDelete = () => {
     if (modalTaskIndex !== null) {
-      setTasks(tasks.filter((_, i) => i !== modalTaskIndex));
-      setModalTaskIndex(null);
+      fetch("http://localhost:3000/tasks/" + tasks[modalTaskIndex]!.id,{
+        method:'DELETE'
+      }).then(response => response.json())
+      .then(datax=>{
+        setTasks(tasks.filter((_, i) => i !== modalTaskIndex));
+        setModalTaskIndex(null);
+      }).catch(
+        error=>{
+          console.error("Error al guardar tarea", error);
+        }
+      );
+
+
+      
     }
   };
 
@@ -101,6 +128,7 @@ function TaskList() {
           <TaskCard
             key={index}
             text={task.text}
+            completed={task.completed}
             onToggle={(completed) => toggleTask(index, completed)}
             onDelete={() => confirmDelete(index)}
           />
