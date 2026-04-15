@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskCard from "./TaskCard";
 import TaskInput from "./TaskInput";
 import ConfirmModal from "./ConfirmModal"; // importamos el modal
@@ -10,13 +10,42 @@ function TaskList() {
     { text: "Hacer pilates", completed: false },
     { text: "Leer libro", completed: false },
   ]);
+  useEffect(
+    ()=>{
+      fetch('http://localhost:3000/tasks')
+      .then((response)=>response.json())
+      .then((data)=>{
+        
+        setTasks((prev) => (data));
 
+      }).catch(error=>{
+        console.log('Error al obtener tareas', error);
+      })
+    },[]
+  );
   const [modalTaskIndex, setModalTaskIndex] = useState<number | null>(null);
 
   // Agregar nueva tarea
   const addTask = (text: string) => {
-    setTasks([...tasks, { text, completed: false }]);
+    let task={id:tasks.length+1,text:text, completed:false}
+    fetch("http://localhost:3000/tasks",{
+      method:'POST',
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(task)
+    }).then(response => response.json())
+    .then(datax=>{
+      console.log("tarea creada en backend", datax);
+      setTasks([...tasks, { text, completed: false }]);
+    }).catch(
+      error=>{
+        console.error("Error al guardar tarea", error);
+      }
+    );
   };
+
+  
 
   // Toggle de completado
   const toggleTask = (index: number, completed: boolean) => {
