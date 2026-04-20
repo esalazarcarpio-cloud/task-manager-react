@@ -14,5 +14,5 @@ datasource db {
 model tareas {
   id              Int      @id @default(autoincrement())
   text            String?  @db.VarChar
-  state           String?  @db.VarChar
+  completed       Boolean  @default(false)
 }
