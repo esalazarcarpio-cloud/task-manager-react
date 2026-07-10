@@ -9,8 +9,8 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cors());
 let tasks = [
-    { id: randomUUID(), text: "Study Express", completed: false },
-    { id: randomUUID(), text: "Build Backend", completed: true },
+    { id: randomUUID(), text: "Study Express NOW", completed: false },
+    { id: randomUUID(), text: "Build Backend NOW", completed: true },
 ];
 app.get("/", (req: any, res: any) => {
     res.send("Backend is working!");
