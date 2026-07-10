@@ -3,14 +3,13 @@ import TaskCard from "./TaskCard";
 import TaskInput from "./TaskInput";
 import ConfirmModal from "./ConfirmModal"; // importamos el modal
 import "./TaskList.css";
+import { API_BASE_URL } from "./../config/api.js";
 
-function TaskList() {
-  const [tasks, setTasks] = useState([
-    
-  ]);
+function TaskList() {  
+  const [tasks, setTasks] = useState([]);  
   useEffect(
     ()=>{
-      fetch('http://localhost:3000/tasks')
+      fetch(API_BASE_URL + '/tasks')
       .then((response)=>response.json())
       .then((data)=>{
         
@@ -26,7 +25,7 @@ function TaskList() {
   // Agregar nueva tarea
   const addTask = (text: string) => {
     let task={text:text, completed:false}
-    fetch("http://localhost:3000/tasks",{
+    fetch(API_BASE_URL + "/tasks",{
       method:'POST',
       headers:{
         "Content-Type":"application/json"
@@ -50,7 +49,7 @@ function TaskList() {
     const task = tasks[index]!;
     task.completed = completed;
 
-    fetch("http://localhost:3000/tasks/" + task.id,{
+    fetch(API_BASE_URL + "/tasks/" + task.id,{
       method:'PUT',
       headers:{
         "Content-Type":"application/json"
@@ -77,7 +76,7 @@ function TaskList() {
   // Confirmar eliminación
   const handleConfirmDelete = () => {
     if (modalTaskIndex !== null) {
-      fetch("http://localhost:3000/tasks/" + tasks[modalTaskIndex]!.id,{
+      fetch(API_BASE_URL + "/tasks/" + tasks[modalTaskIndex]!.id,{
         method:'DELETE'
       }).then(response => response.json())
       .then(datax=>{
