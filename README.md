@@ -1,16 +1,35 @@
-# React + Vite
+# Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación para realizar tareas, permitiendo crear, consultar, actualizar y eliminar tareas para facilitar la organización y el seguimiento de actividades.
 
-Currently, two official plugins are available:
+[![CI](https://github.com/esalazarcarpio-cloud/task-manager-react/actions/workflows/ci.yml/badge.svg)](https://github.com/esalazarcarpio-cloud/task-manager-react/actions/workflows/ci.yml)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Instalación local
 
-## React Compiler
+```bash
+git clone https://github.com/esalazarcarpio-cloud/task-manager-react.git
+cd task-manager-react
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Variables de entorno
 
-## Expanding the ESLint configuration
+Crea un archivo `.env` en la raíz con las siguientes claves (sin valores reales en este documento):
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```env
+DATABASE_URL=
+JWT_SECRET=
+PORT=
+```
+
+## 📜 Comandos disponibles
+
+| Comando | Descripción |
+|----------|-------------|
+| `npm run dev` | Levanta el entorno de desarrollo. |
+| `npm run build` | Genera el build de producción. |
+| `npm test` | Corre las pruebas automatizadas (**pendiente — Sesión 3**). |
+
+## 🗄️ Base de datos
+
+PostgreSQL con migraciones y seeds gestionados con Prisma (ver Módulo 2).
