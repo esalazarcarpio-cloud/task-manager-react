@@ -46,10 +46,7 @@ jobs:
     name: Pruebas unitarias y cobertura
     runs-on: ubuntu-latest
     env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-    #defaults:
-    #  run:
-    #    working-directory: ./backend
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}    
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -68,8 +65,6 @@ jobs:
         working-directory: ./backend  
       - run: npx vitest run --coverage
         working-directory: ./
-        
- 
   e2e:
     name: Pruebas E2E
     runs-on: ubuntu-latest
