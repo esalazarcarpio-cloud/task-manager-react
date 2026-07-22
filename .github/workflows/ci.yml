@@ -95,3 +95,4 @@ jobs:
         run: railway up --service task-manager-react --environment staging
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          
