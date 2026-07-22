@@ -41,7 +41,7 @@ function TaskInput({ onAddTask }: Props) {
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder={`Agregar tarea del ${formattedDate}...`}
+          placeholder={`Agregar tarea`}
         />
         <button onClick={handleAdd}>Agregar</button>
       </div>
