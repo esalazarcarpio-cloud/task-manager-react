@@ -22,7 +22,6 @@ node_modules/
 *.sln
 *.sw?
 
-<<<<<<< HEAD
 
 # Variables de entorno
 .env
@@ -33,11 +32,9 @@ node_modules/
 dist/
 build/
 dist-ssr/
-=======
 # Playwright
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
->>>>>>> fcad517d9abec4132ca44b90326e6aceb12f4d5d
