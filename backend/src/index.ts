@@ -32,7 +32,7 @@ export const prisma = new PrismaClient({ adapter })
 
 
 app.get("/", (req: any, res: any) => {
-    res.send("Backend is working!");
+    res.send("Backend is working, too!");
 });
 
 app.get("/tasks", async (req: any, res: any) => {
